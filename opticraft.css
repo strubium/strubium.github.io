@@ -204,10 +204,10 @@ body {
 	margin-bottom: 20px;
 }
 .tilesWrap li input::before {
-	content: "Expand";
+	content: "Collapse";
 }
 .tilesWrap li input:checked::before {
-	content: "Collapse";
+	content: "Expand";
 }
 .tilesWrap li a {
 	font-size: 18px;
