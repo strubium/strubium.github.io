@@ -274,9 +274,9 @@ body {
 .censored:hover {
 	filter: blur(4px);
 }
-.phosphor {
+.hesperus {
 	transition: text-shadow 1s;
 }
-.phosphor:hover {
+.hesperus:hover {
 	text-shadow: 0px 0px 20px #F9C22E;
 }
