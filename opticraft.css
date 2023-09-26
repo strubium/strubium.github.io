@@ -216,6 +216,9 @@ body {
 	position: relative;
 	display: block;
 }
+.fancyHerf a {
+	color: #E01A4F;
+}
 .tilesWrap li button {
 	background: transparent;
 	padding: 10px 10px;
