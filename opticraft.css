@@ -264,8 +264,8 @@ body {
 }
 .tilesWrap li:before {
 	background: #E01A4F;
-	background: -webkit-linear-gradient(to right, #E01A4F, #F9C22E);
-	background: linear-gradient(to right, #E01A4F, #F9C22E);
+	background: -webkit-linear-gradient(to right, #E01A4F, #000000);
+	background: linear-gradient(to right, #E01A4F, #000000);
 }
 
 .censored {
