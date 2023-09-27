@@ -73,12 +73,6 @@ body {
 	font-family: 'Nunito';
 }
 
-.a:hover {
-	color: #000000;
-	left: 0;
-	opacity: 1;
-}
-
 .header-div {
 	position: static;
 	margin: 0% 0% 0% 10%;
