@@ -33,14 +33,14 @@
 	}
   }
 
-  @media (prefers--scheme: dark) {
+  @media (prefers-color-scheme: dark) {
 	body {
 		background: #141617;
-		: #F9F8F8;
+		color: #F9F8F8;
 	}
 
 	.version {
-		: #F9F8F8;
+		color: #F9F8F8;
 	}
 
 	.box {
@@ -56,11 +56,11 @@
 	}
 	.tilesWrap li input {
 		border: 2px solid #F9F8F8;
-		: #F9F8F8;
+		color: #F9F8F8;
 	}
 	.tilesWrap li button {
 		border: 2px solid #F9F8F8;
-		: #F9F8F8;
+		color: #F9F8F8;
 	}
 	.tilesWrap li button:before {
 		background: #F9F8F8;
@@ -103,10 +103,10 @@ body {
     top: -150px;
 }
 .desc-span {
-	: #E01A4F;
+	color: #E01A4F;
 }
 .issues {
-	: #E01A4F;
+	color: #E01A4F;
 	transition: text-shadow 0.5s;
 }
 .issues:hover {
@@ -120,7 +120,7 @@ body {
 	transition: text-shadow 0.5s;
 }
 .version:hover {
-	: #E01A4F;
+	color: #E01A4F;
 	text-shadow: 0px 0px 10px #E01A4F;
 }
 
