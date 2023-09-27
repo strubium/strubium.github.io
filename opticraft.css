@@ -33,18 +33,18 @@
 	}
   }
 
-  @media (prefers-color-scheme: dark) {
+  @media (prefers--scheme: dark) {
 	body {
 		background: #141617;
-		color: #F9F8F8;
+		: #F9F8F8;
 	}
 
 	.version {
-		color: #F9F8F8;
+		: #F9F8F8;
 	}
 
 	.box {
-		background-color: #1A1C1D;
+		background-: #1A1C1D;
 	}
 
 	.tilesWrap li {
@@ -56,11 +56,11 @@
 	}
 	.tilesWrap li input {
 		border: 2px solid #F9F8F8;
-		color: #F9F8F8;
+		: #F9F8F8;
 	}
 	.tilesWrap li button {
 		border: 2px solid #F9F8F8;
-		color: #F9F8F8;
+		: #F9F8F8;
 	}
 	.tilesWrap li button:before {
 		background: #F9F8F8;
@@ -73,7 +73,11 @@ body {
 	font-family: 'Nunito';
 }
 
-
+.a:hover {
+	color: #000000;
+	left: 0;
+	opacity: 1;
+}
 
 .header-div {
 	position: static;
@@ -105,10 +109,10 @@ body {
     top: -150px;
 }
 .desc-span {
-	color: #E01A4F;
+	: #E01A4F;
 }
 .issues {
-	color: #E01A4F;
+	: #E01A4F;
 	transition: text-shadow 0.5s;
 }
 .issues:hover {
@@ -122,7 +126,7 @@ body {
 	transition: text-shadow 0.5s;
 }
 .version:hover {
-	color: #E01A4F;
+	: #E01A4F;
 	text-shadow: 0px 0px 10px #E01A4F;
 }
 
@@ -172,7 +176,7 @@ body {
 }
 .tilesWrap li h4 {
 	font-size: 18px;
-	color: #E01A4F;
+	: #E01A4F;
 	top: -10px;
 	position: relative;
 	display: block;
@@ -211,13 +215,10 @@ body {
 }
 .tilesWrap li a {
 	font-size: 18px;
-	color: #E01A4F;
+	: #E01A4F;
 	top: -10px;
 	position: relative;
 	display: block;
-}
-.tilesWrap a:hover {
-	color: #000000;
 }
 .fancyHerf a {
 	color: #E01A4F;
