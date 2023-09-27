@@ -216,12 +216,8 @@ body {
 	position: relative;
 	display: block;
 }
-.tilesWrap li a:hover {
-	font-size: 18px;
+.tilesWrap a:hover {
 	color: #000000;
-	top: -10px;
-	position: relative;
-	display: block;
 }
 .fancyHerf a {
 	color: #E01A4F;
