@@ -216,6 +216,13 @@ body {
 	position: relative;
 	display: block;
 }
+.tilesWrap li a:hover {
+	font-size: 18px;
+	color: #000000;
+	top: -10px;
+	position: relative;
+	display: block;
+}
 .fancyHerf a {
 	color: #E01A4F;
 }
@@ -270,7 +277,11 @@ body {
 	background: -webkit-linear-gradient(to right, #E01A4F, #000000);
 	background: linear-gradient(to right, #E01A4F, #000000);
 }
-
+.tilesWrap br {
+   display: block;
+   margin: 10px 0;
+};
+}
 .censored {
 	transition: filter 1s;
 }
