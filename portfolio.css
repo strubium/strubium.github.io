@@ -54,6 +54,22 @@ ul.team-list {
   border-radius: 8px;
   transition: background 0.2s;
 }
+.project-list li ul {
+    margin-top: 0.5rem;   /* Adds space between parent and nested list */
+    margin-left: 1.5rem;  /* Keep indentation for sub-items */
+    padding-left: 0;       /* Remove default padding */
+}
+
+.project-list li ul li {
+    list-style: none;
+    background: #1c1c1c;
+    padding: 0.5rem 1rem; /* Keep consistent padding */
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+.project-list li ul li:hover {
+  background-color: #333;
+}
 .project-list li:hover {
   background: #2a2a2a;
 }
