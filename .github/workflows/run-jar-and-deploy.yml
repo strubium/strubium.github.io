@@ -1,0 +1,39 @@
+name: Run JAR and Deploy HTML
+
+on:
+  push:
+    branches:
+      - main  # Change if your default branch is different
+
+jobs:
+  run-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check out the repository
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      # 2. Set up Java
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+
+      # 3. Run the JAR to generate teams.html
+      - name: Run JAR
+        run: java -jar ScoutingParser-1.0-SNAPSHOT.jar  
+
+      # 4. Prepare HTML for deployment
+      - name: Prepare deployment folder
+        run: |
+          mkdir -p public
+          mv teams.html public/
+
+      # 5. Deploy HTML to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v7
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./frc
