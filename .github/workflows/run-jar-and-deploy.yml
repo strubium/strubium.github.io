@@ -3,14 +3,14 @@ name: Run JAR and Deploy HTML
 on:
   push:
     branches:
-      - main  # Change if your default branch is different
+      - main  # Or your default branch
 
 jobs:
   run-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Check out the repository
+      # 1. Checkout the repository
       - name: Checkout repo
         uses: actions/checkout@v3
 
@@ -25,11 +25,11 @@ jobs:
       - name: Run JAR
         run: java -jar ScoutingParser-1.0-SNAPSHOT.jar  
 
-      # 4. Prepare HTML for deployment
+      # 4. Ensure the output folder exists for deployment
       - name: Prepare deployment folder
         run: |
-          mkdir -p public
-          mv teams.html public/
+          mkdir -p frc
+          mv teams.html frc/
 
       # 5. Deploy HTML to GitHub Pages
       - name: Deploy to GitHub Pages
@@ -37,4 +37,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./frc
-
