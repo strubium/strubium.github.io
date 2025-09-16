@@ -23,7 +23,7 @@ jobs:
 
       # 3. Run the JAR to generate teams.html
       - name: Run JAR
-        run: java -cp ScoutingParser-1.0-SNAPSHOT.jar com.strubium.gasstation.Main
+        run: java -jar build/libs/ScoutingParser-1.0-SNAPSHOT-all.jar
 
       # 4. Ensure the output folder exists for deployment
       - name: Prepare deployment folder
