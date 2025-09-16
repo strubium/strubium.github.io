@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scouting Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.png" type="image/png">
+</head>
+<body>
+
+<header class="main-header">
+    <h1>Scouting Dashboard</h1>
+
+    <!-- Search bar -->
+    <form class="search-bar" onsubmit="event.preventDefault(); redirectToTeam();">
+        <input type="number" id="teamInput" placeholder="Enter team number" required>
+        <button type="submit">Search</button>
+    </form>
+</header>
+
+<div class="container">
+
+    <!-- Intro section -->
+    <section class="intro">
+        <h2>Welcome to the Scouting Dashboard</h2>
+        <p>
+            Discover detailed insights and real-time statistics for every FRC team. Whether you're a scout, mentor, or fan, our dashboard helps you quickly find vital team information — from performance history to current season data — all in one place.
+        </p>
+        <p>
+            Use the search bar above to enter a team number and dive into their latest stats and key links to trusted resources.
+        </p>
+    </section>
+
+    <!-- External Resources -->
+    <div class="links-card">
+        <h2>Other Resources</h2>
+        <ul>
+            <li><a href="https://www.thebluealliance.com" target="_blank" rel="noopener noreferrer">The Blue Alliance</a></li>
+            <li><a href="https://www.statbotics.io" target="_blank" rel="noopener noreferrer">Statbotics</a></li>
+            <li><a href="https://frc-events.firstinspires.org" target="_blank" rel="noopener noreferrer">FIRST Inspires</a></li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function redirectToTeam() {
+        const teamNum = document.getElementById('teamInput').value.trim();
+        if (teamNum) {
+            window.location.href = 'team.html';
+        }
+    }
+</script>
+
+</body>
+</html>

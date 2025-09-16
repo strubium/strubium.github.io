@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Scouting</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="main-header">
+    <h1><a href="/frc/dashboard/index.html" style="color:white; text-decoration:none;">Scouting Dashboard</a></h1>
+    <form class="search-bar" onsubmit="event.preventDefault(); redirectToTeam();">
+        <input type="number" id="teamInput" placeholder="Enter team number" required>
+        <button type="submit">Search</button>
+    </form>
+</header>
+
+<div class="container">
+    <div class="team-card">
+        <div class="team-image-container">
+            <img id="teamImage" src="" alt="Team Image" />
+        </div>
+        <div class="team-info">
+            <h1 id="teamTitle">Loading...</h1>
+            <table class="info-table">
+                <tr><td>Rookie Year</td><td id="rookieYear">--</td></tr>
+                <tr><td>Win Rate</td><td id="winRate">--</td></tr>
+                <tr><td>Wins : Losses : Ties</td><td id="record">-- : -- : --</td></tr>
+                <tr><td>Current Norm EPA</td><td id="currentEPA">--</td></tr>
+                <tr><td>Active</td><td id="activeStatus">--</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="links-card">
+        <h2>Game History</h2>
+        <ul id="gameHistory"></ul>
+    </div>
+</div>
+
+<script>
+    const img = document.getElementById('teamImage');
+    img.onload = () => {
+        img.style.width = "100%";
+        img.style.height = "100%";
+        img.style.objectFit = "contain"; // or "cover"
+    };
+
+    const TBA_AUTH_KEY = 'sCnRaTZauBePo5nQgSRoYOYyjSbW7k0on3VLPOjSuyRXegaUeOrkOxIEnvMcpocr'; // Replace with your TBA key
+
+    function redirectToTeam() {
+        const teamNum = document.getElementById('teamInput').value.trim();
+        if (teamNum) {
+            localStorage.setItem('teamNumber', teamNum);
+            window.location.href = 'team.html';
+        }
+    }
+
+    async function fetchTeamImage(teamNum, year) {
+        const tbaMediaResp = await fetch(`https://www.thebluealliance.com/api/v3/team/frc${teamNum}/media/${year}`, {
+            headers: { "X-TBA-Auth-Key": TBA_AUTH_KEY }
+        });
+
+        if (!tbaMediaResp.ok) return null;
+
+        const mediaArray = await tbaMediaResp.json();
+        for (const media of mediaArray) {
+            if (media.type === "imgur") {
+                return `https://i.imgur.com/${media.foreign_key}.jpg`;
+            } else if (media.type === "cdphotothread") {
+                return media.direct_url;
+            }
+        }
+        return null;
+    }
+
+    async function loadTeamData() {
+        const teamNum = localStorage.getItem('teamNumber');
+        if (!teamNum) return;
+
+        document.getElementById('teamTitle').textContent = `Team ${teamNum}`;
+
+        try {
+            // Fetch Statbotics data
+            const statResponse = await fetch(`https://api.statbotics.io/v3/team/${teamNum}`);
+            const statData = statResponse.ok ? await statResponse.json() : null;
+
+            if (statData) {
+                document.getElementById('rookieYear').textContent = statData.rookie_year;
+                document.getElementById('winRate').textContent = statData.record.winrate;
+                document.getElementById('record').textContent =
+                    `${statData.record.wins} : ${statData.record.losses} : ${statData.record.ties}`;
+                document.getElementById('currentEPA').textContent = statData.norm_epa.current;
+                document.getElementById('activeStatus').textContent = statData.active ? 'Yes' : 'No';
+            }
+
+            // Try to fetch current year image
+            const currentYear = new Date().getFullYear();
+            let imgUrl = await fetchTeamImage(teamNum, currentYear);
+
+            // If no current year image, fetch most recent year
+            if (!imgUrl) {
+                const historyResp = await fetch(`https://www.thebluealliance.com/api/v3/team/frc${teamNum}/years_participated`, {
+                    headers: { "X-TBA-Auth-Key": TBA_AUTH_KEY }
+                });
+                const years = historyResp.ok ? await historyResp.json() : [];
+                years.sort((a, b) => b - a); // newest first
+                for (const year of years) {
+                    imgUrl = await fetchTeamImage(teamNum, year);
+                    if (imgUrl) break;
+                }
+            }
+
+            // Default placeholder if still no image
+            if (!imgUrl) {
+                imgUrl = 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
+            }
+
+            document.getElementById('teamImage').src = imgUrl;
+
+            // Fetch TBA team game history
+            const historyResp = await fetch(`https://www.thebluealliance.com/api/v3/team/frc${teamNum}/years_participated`, {
+                headers: { "X-TBA-Auth-Key": TBA_AUTH_KEY }
+            });
+            const years = historyResp.ok ? await historyResp.json() : [];
+            const FRC_GAME_NAMES = {
+                2025: "REEFSCAPE℠ presented by Haas",
+                2024: "CRESCENDO℠",
+                2023: "CHARGED UP℠ presented by Haas",
+                2022: "RAPID REACT℠ presented by The Boeing Company",
+                2021: "Infinite Recharge",
+                2020: "INFINITE RECHARGE",
+                2019: "DESTINATION: DEEP SPACE",
+                2018: "FIRST POWER UP",
+                2017: "FIRST STEAMWORKS",
+                2016: "FIRST STRONGHOLD",
+                2015: "RECYCLE RUSH",
+                2014: "AERIAL ASSIST",
+                2013: "ULTIMATE ASCENT",
+                2012: "Rebound Rumble",
+                2011: "LOGO MOTION",
+                2010: "BREAKAWAY",
+                2009: "LUNACY",
+                2008: "FIRST Overdrive",
+                2007: "Rack 'N' Roll",
+                2006: "Aim High",
+                2005: "Triple Play",
+                2004: "FIRST Frenzy",
+                2003: "Stack Attack",
+                2002: "Zone Zeal",
+                2001: "Diabolical Dynamics",
+                2000: "Co-opertition FIRST",
+                1999: "Double Trouble",
+                1998: "Ladder Logic"
+            };
+
+            const historyList = document.getElementById('gameHistory');
+            historyList.innerHTML = '';
+            years.sort((a, b) => b - a).forEach(year => {
+                const li = document.createElement('li');
+                li.textContent = `${year} - ${FRC_GAME_NAMES[year] || 'Unknown Game'}`;
+                historyList.appendChild(li);
+            });
+
+        } catch (err) {
+            console.error('Error loading team data:', err);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadTeamData);
+</script>
+
+</body>
+</html>
