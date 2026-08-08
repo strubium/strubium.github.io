@@ -1,0 +1,42 @@
+.heart-container {
+    text-align: center;
+}
+
+.heart {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.heart-container p,
+.heart-container h1,
+.heart-container h2,
+.heart-container h3 {
+    margin-top: 10px;
+    font-family: "Courier New", monospace;
+}
+
+.heart-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px auto;
+}
+
+.heart-container li {
+    margin: 10px 0;
+    font-family: "Courier New", monospace;
+    font-size: 16px;
+}
+
+.heart-container li {
+    margin: 10px auto;
+    padding: 10px 15px;
+    max-width: 500px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: "Courier New", monospace;
+}
+
+.heart-container li a:hover {
+    text-decoration: underline;
+}

@@ -1,4 +1,4 @@
-name: Build JAR, Generate HTML, Deploy to Pages
+name: Deploy to Pages
 
 on:
   push:
@@ -25,24 +25,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 2. Set up Java 21
-      - name: Set up Java
-        uses: actions/setup-java@v3
-        with:
-          distribution: temurin
-          java-version: 21
-
-      # 4. Run the JAR to generate teams.html
-      - name: Run JAR
-        run: java -jar ScoutingParser-1.0-SNAPSHOT-all.jar
-
-      # 5. Upload artifact for Pages (root)
+      # 2. Upload artifact for Pages (root)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'   # Include all files you want on your site (teams.html at root)
 
-      # 6. Deploy to GitHub Pages
+      # 3. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
