@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Counter Protesting the Moddex.gg protest" />
+    <title>Counter Protesting</title>
+    <link rel="icon" type="image/png" href="/profile.png" />
+    <link rel="stylesheet" href="/heart.css" />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css"
+    >
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+</head>
+<body>
+
+<div class="heart-container">
+    <svg class="heart" viewBox="0 0 200 200">
+        <polygon
+                class="heart-shape"
+                points="100,175 35,105 25,65 45,35 80,30 100,55 120,30 155,35 175,65 165,105"
+        />
+    </svg>
+
+    <h1>I am counter protesting the Moddex Protest</h1>
+    <p>Hello people. I have made this page because someone (Po2432) has decided to lie</p>
+    <p>I am not affiliated with Moddex Staff. i am just some guy</p>
+
+
+    <h2>What is Moddex.gg?</h2>
+    <p>Moddex.gg is a mod review/ranking site where users can rank mods on a 0.5-5 star rank.</p>
+    <p>It uses the CurseForge and Modrinth API's to fetch mod data and does not host mod jars</p>
+
+    <h2>So who is protesting Moddex.gg?</h2>
+    <p>Some guy named Po2432. After emailing with Moddex staff, they decided to launch a <a href="https://www.reddit.com/user/po2432/">reddit campaign</a> and a  <a href=" https://po2432.github.io/Po2432/moddex.html">vibecoded website</a> (we will get into the vibecoding later)</p>
+
+    <h2>So why is this bad?</h2>
+    <p>Po2432 vibecoded website makes three (3) provably false statements and engages in deception to make their movement seem larger than it is. </p>
+    <p>i will address these issues below</p>
+
+    <h3>Deception</h3>
+    <p>I am going to start with the deception as it is the least defendable</p>
+    <p>As you open their website, right below the title you see a 'Campaign Reach & Statistics', and wow! they've gotten lots of views! </p>
+    <p>As of writing the page says 100+ community impressions, and 2,419 protest page visitors. That's awesome Po2432! Your protest is reaching lots of people!</p>
+    <br>
+    <p>Unfortunately, it is all fake. It is actually fake in two ways</p>
+    <ul>
+        <div class="custom-li">
+        <li>
+            Po2435's loadVisitorCount code:
+            <pre><code class="language-javascript, custom-li">
+                // Bulletproof Visitor Counter (API + Smart Dynamic Fallback)
+                async function loadVisitorCount() {
+                    const countElem = document.getElementById('site-visit-count');
+
+                    // Calculate baseline count based on time elapsed + local increment
+                    let localVisits =
+                        parseInt(localStorage.getItem('protest_visit_count') || "0") + 1;
+
+                    localStorage.setItem('protest_visit_count', localVisits);
+
+                    const baseEstimate = 2410 + localVisits;
+
+                    try {
+                        // Attempt live fetch
+                        const res = await fetch(
+                            'https://api.codetabs.com/v1/counter?key=po2432_moddex_protest_v4'
+                        );
+
+                        const text = await res.text();
+                        const apiCount = parseInt(text, 10);
+
+                        if (!isNaN(apiCount) && apiCount > 0) {
+                            countElem.innerText =
+                                (apiCount + 2400).toLocaleString();
+                        } else {
+                            countElem.innerText =
+                                baseEstimate.toLocaleString();
+                        }
+                    } catch (e) {
+                        // Fallback if adblocker blocks counter API
+                        countElem.innerText =
+                            baseEstimate.toLocaleString();
+                    }
+                }
+            </code></pre>
+
+            <p>This code, as ChatGPT will tell you, is a "Bulletproof Visitor Counter" with "API + Smart Dynamic Fallback"</p>
+            <p>This does two things to deceive a user on the website</p>
+            <p>1: It stores a value called <code>protest_visit_count</code> in the browser's <code>localStorage</code> without asking. This increases by one when a user loads the site, Po2432 then adds 2410 to that number and displays it as a 'live' view count!</p>
+            <p>2: Way two is more the 'true' way, Po2432 asks https://api.codetabs.com/v1/counter?key=po2432_moddex_protest_v4 for the number of users who have visited the site, then adds 2400 to that number!</p>
+        </li>
+        </div>
+    </ul>
+    <p>As you can see Po2432 is artificially increasing the view count to make the site seem more popular than it is</p>
+    <h3>Po2432's actual points</h3>
+    <p>What are Po2432's actual points? Well, in their Statement of Concern, Po2432 has 3 points</p>
+
+    <ul>
+        <div class="custom-li">
+            <li>
+                <h4>Point One:</h4>
+                <p>In point one, "Clarification on Downloads and Revenue" Po2432 says that "Moddex.gg correctly routes file download links to official sources (such as CurseForge)"</p>
+                <p>This is correct, Moddex does not share jars </p>
+            </li>
+            <li>
+                <h4>Point Two:</h4>
+                <p>In point two, "The Core Problem: Reputation Damage via Unmonitored Feedback" Po2432 says that "Moddex.gg generates independent comment, rating, and feedback sections for listed mods without the authors' knowledge or consent."</p>
+                <p>and therefore "Because developers are unaware these third-party comment sections exist, user bug reports and support inquiries submitted on Moddex.gg go completely unanswered. Players incorrectly assume the author is neglectful or hostile, leading to severe, unmerited reputation damage and user abandonment."</p>
+                <p>There has been no demonstrated evidence that either of these assertions have every happened. Moddex also links (under a mods "External Links" section) a mods issue page in a manner exactly the same to CurseForge and Modrinth.</p>
+                <p>Remember Hitchens's razor: "What can be asserted without evidence can also be dismissed without evidence."</p>
+            </li>
+            <li>
+                <h4>Point Three:</h4>
+                <p>In Po2432's final point, "Platform Terms of Service &amp; API Compliance," Po2432 says that "Moddex.gg relies on platform APIs to populate its directory. While CurseForge's Terms of Service currently permit third-party metadata retrieval, Modrinth's Terms of Service are ambiguous regarding complete catalog proxying."</p>
+                <p>Modrinth explicitly provides a public API for third-party applications to retrieve project information. Its API documentation states that most requests do not require authentication, and that API responses are public and accessible to everyone, including code on any site.</p>
+                <p>Modrinth does impose requirements on API users. For example, applications must provide a uniquely identifying <code>User-Agent</code>, and the API is subject to rate limits. Therefore, the existence of the API does not by itself prove that every possible use of Modrinth's data is permitted.</p>
+                <p>However, the claim that Modrinth's API is simply unavailable for third-party use would clearly be incorrect. Modrinth explicitly documents and facilitates public API access</p>
+
+                <p>For reference, Modrinth's API documentation is available here: <a href="https://docs.modrinth.com/api/">Modrinth API Documentation</a>.</p>
+
+                <p>Likewise, CurseForge publishes its <a href="https://support.curseforge.com/support/solutions/articles/9000207405-curse-forge-3rd-party-api-terms-and-conditions">Third-Party API Terms and Conditions</a>.</p>
+
+            </li>
+        </div>
+    </ul>
+
+</div>
+
+
+</body>
+
+<script>
+    hljs.highlightAll();
+</script>
+<script>
+    const heart = document.querySelector(".heart");
+    const heartShape = document.querySelector(".heart-shape");
+
+    let holdTimer;
+
+    heart.addEventListener("pointerdown", () => {
+        holdTimer = setTimeout(() => {
+            // change the heart into a triangle
+            heartShape.setAttribute(
+                "points",
+                "100,27 25,157 175,157"
+            );
+
+            heartShape.classList.add("triangle");
+        }, 1000); // hold for 1 second
+    });
+
+    heart.addEventListener("pointerup", () => {
+        clearTimeout(holdTimer);
+    });
+
+    heart.addEventListener("pointerleave", () => {
+        clearTimeout(holdTimer);
+    });
+</script>
+</html>

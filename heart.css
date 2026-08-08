@@ -37,6 +37,30 @@
     font-family: "Courier New", monospace;
 }
 
+.custom-li li {
+    margin: 10px auto;
+    padding: 10px 15px;
+    max-width: 1300px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: "Courier New", monospace;
+}
+
 .heart-container li a:hover {
     text-decoration: underline;
+}
+pre {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-family: "Cascadia Code", "Fira Code", monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+pre code {
+    white-space: pre;
 }
