@@ -37,15 +37,6 @@
     font-family: "Courier New", monospace;
 }
 
-.custom-li li {
-    margin: 10px auto;
-    padding: 10px 15px;
-    max-width: 1300px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-family: "Courier New", monospace;
-}
-
 .heart-container li a:hover {
     text-decoration: underline;
 }
